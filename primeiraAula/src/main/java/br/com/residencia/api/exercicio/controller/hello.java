@@ -2,6 +2,7 @@ package br.com.residencia.api.exercicio.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -13,8 +14,13 @@ public class hello {
     }
 
 
-    @GetMapping("/reposta")
+    @GetMapping("/resposta")
     public String reposta() {
         return "Teste";
+    }
+
+    @GetMapping("/converter")
+    public String converter(@RequestParam String nome) {
+        return nome.toUpperCase();
     }
 }
