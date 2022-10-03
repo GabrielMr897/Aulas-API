@@ -23,4 +23,10 @@ public class hello {
     public String converter(@RequestParam String nome) {
         return nome.toUpperCase();
     }
+
+    @GetMapping("/soma")
+    public Double somar(@RequestParam Double num1, @RequestParam Double num2) {
+        return num1 + num2;
+    }
+
 }
