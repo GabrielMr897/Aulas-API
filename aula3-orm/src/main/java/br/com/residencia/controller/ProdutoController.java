@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -49,11 +50,28 @@ public class ProdutoController {
 
 
     @DeleteMapping("{id}")
-	public ResponseEntity<Void> remover(@PathVariable Long id) {
-		if (!produtoRepository.existsById(id)) {
-			return ResponseEntity.notFound().build();
-		}
-		produtoRepository.deleteById(id);
-		return ResponseEntity.noContent().build();
+	  public ResponseEntity<Void> remover(@PathVariable Long id) {
+		  if (!produtoRepository.existsById(id)) {
+			  return ResponseEntity.notFound().build();
+		  }
+		  produtoRepository.deleteById(id);
+		  return ResponseEntity.noContent().build();
 	}
+
+
+  @PutMapping({"id"})
+  public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
+    if(!produtoRepository.existsById(id)) {
+      return ResponseEntity.notFound().build();
+    }
+    produto.setId(id);
+    return ResponseEntity.ok(produtoRepository.save(produto));
+  }
+
+  @PostMapping("/salvarTodos")
+	@ResponseStatus(HttpStatus.CREATED)
+	public List<Produto> inserirTodos(@RequestBody List<Produto> produtos) {
+		return produtoRepository.saveAll(produtos);
+	}
+
 }
