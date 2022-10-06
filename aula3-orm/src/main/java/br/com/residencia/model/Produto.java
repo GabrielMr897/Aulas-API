@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 
@@ -23,7 +24,8 @@ public class Produto {
     @Column(name = "id_produto")
     private long id;
 
-    @NotBlank
+    @NotBlank(message= "Preencha a descrição do produto")
+    @Size(max = 40, min = 5)
     @Column(nullable = false, length = 40)
     private String descricao;
 
