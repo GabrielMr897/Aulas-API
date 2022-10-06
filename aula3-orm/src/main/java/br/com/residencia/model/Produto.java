@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -25,13 +28,16 @@ public class Produto {
     private long id;
 
     @NotBlank(message= "Preencha a descrição do produto")
-    @Size(max = 40, min = 5)
+    @Size(max = 40, min = 5, message = "Tamanho do campo inválido")
     @Column(nullable = false, length = 40)
     private String descricao;
 
+    @DecimalMax(value = "1000", message = "O preço deve ser inferior a R${value}.00")
+    @DecimalMin(value = "10", message = "O preço não deve ser inferior a R${value}.00")
     @Column
     private BigDecimal valor;
 
+    @Future(message = "Você inseriu uma data inválida")
     @Column(name = "data_cadastro")
     private LocalDate dataCadastro;
 
