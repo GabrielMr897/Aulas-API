@@ -32,7 +32,7 @@ public class Produto {
     @Column(nullable = false, length = 40)
     private String descricao;
 
-    @DecimalMax(value = "1000", message = "O preço deve ser inferior a R${value}.00")
+    @DecimalMax(value = "10000", message = "O preço deve ser inferior a R${value}.00")
     @DecimalMin(value = "10", message = "O preço não deve ser inferior a R${value}.00")
     @Column
     private BigDecimal valor;

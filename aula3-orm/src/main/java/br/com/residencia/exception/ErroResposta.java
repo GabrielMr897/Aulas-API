@@ -1,18 +1,24 @@
 package br.com.residencia.exception;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ErroResposta {
+
+
     private Integer status;
     private String titulo;
     private LocalDateTime dataHora;
+    private List<String> erros;
 
-    
-    public ErroResposta(Integer status, String titulo, LocalDateTime dataHora) {
+
+    public ErroResposta(Integer status, String titulo, LocalDateTime dataHora, List<String> erros) {
+        super();
         this.status = status;
         this.titulo = titulo;
         this.dataHora = dataHora;
+        this.erros = erros;
     }
 
 
@@ -43,5 +49,9 @@ public class ErroResposta {
 
     public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
+    }
+
+    public List<String> getErros() {
+        return erros;
     }
 }
