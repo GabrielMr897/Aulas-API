@@ -3,6 +3,8 @@ package br.com.residencia.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +46,7 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto inserir(@RequestBody Produto produto) {
+    public Produto inserir(@Valid @RequestBody Produto produto) {
         return produtoRepository.save(produto);
     }
 
@@ -70,7 +72,7 @@ public class ProdutoController {
 
   @PostMapping("/salvarTodos")
 	@ResponseStatus(HttpStatus.CREATED)
-	public List<Produto> inserirTodos(@RequestBody List<Produto> produtos) {
+	public List<Produto> inserirTodos(@Valid @RequestBody List<Produto> produtos) {
 		return produtoRepository.saveAll(produtos);
 	}
 
