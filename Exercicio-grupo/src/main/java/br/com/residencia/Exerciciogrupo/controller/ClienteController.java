@@ -3,6 +3,8 @@ package br.com.residencia.Exerciciogrupo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,13 +43,13 @@ public class ClienteController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente inserir(@RequestBody Cliente cliente) {
+	public Cliente inserir(@Valid @RequestBody Cliente cliente) {
 		return clienteRepository.save(cliente);
 	}
 	
 	@PostMapping("/salvarTodos")
 	@ResponseStatus(HttpStatus.CREATED)
-	public List<Cliente> inserirTodos(@RequestBody List<Cliente> cliente){
+	public List<Cliente> inserirTodos(@Valid @RequestBody List<Cliente> cliente){
 		return clienteRepository.saveAll(cliente);
 	}
 	
@@ -61,7 +63,7 @@ public class ClienteController {
 	}
 	
 	@PutMapping("{id}")
-	public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente cliente){
+	public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @Valid @RequestBody Cliente cliente){
 		if(!clienteRepository.existsById(id)) {
 			return ResponseEntity.notFound().build();
 		}

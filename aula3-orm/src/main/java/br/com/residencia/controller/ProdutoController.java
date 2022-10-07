@@ -62,7 +62,7 @@ public class ProdutoController {
 
 
   @PutMapping({"id"})
-  public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
+  public ResponseEntity<Produto> atualizar(@PathVariable Long id, @Valid @RequestBody Produto produto) {
     if(!produtoRepository.existsById(id)) {
       return ResponseEntity.notFound().build();
     }
