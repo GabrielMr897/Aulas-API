@@ -1,5 +1,6 @@
 package br.com.residencia.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

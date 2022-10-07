@@ -1,6 +1,7 @@
 package br.com.residencia.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,4 +31,7 @@ public class Veiculo {
     @Size(max = 40)
     @Column(nullable = false, length = 40)
     private String modelo;
+
+    @Embedded
+    private Caracteristica caracteristica;
 }

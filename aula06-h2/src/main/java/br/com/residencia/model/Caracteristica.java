@@ -1,14 +1,23 @@
 package br.com.residencia.model;
 
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import br.com.residencia.enums.Categoria;
 import br.com.residencia.enums.Combustivel;
 
+
+@Embeddable
 public class Caracteristica {
     private String renavam;
     private String chassi;
     private Integer ano;
 
+    @Enumerated(EnumType.STRING)
     private Categoria categoria;
+
+    @Enumerated(EnumType.ORDINAL)
     private Combustivel Combustivel;
     
     public String getRenavam() {
