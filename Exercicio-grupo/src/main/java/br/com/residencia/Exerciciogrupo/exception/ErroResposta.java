@@ -1,5 +1,6 @@
 package br.com.residencia.Exerciciogrupo.exception;
 
+
 import java.time.LocalDateTime;
 import java.util.List;
 

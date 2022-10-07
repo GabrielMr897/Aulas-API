@@ -31,11 +31,10 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @Override
-   protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
-           HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
+            HttpHeaders headers, HttpStatus status, WebRequest request) {
+                ErroResposta erroResposta = new ErroResposta(status.value(),"Existem campos invalidos. Confira o preenchimento", LocalDateTime.now(), null);
 
-            ErroResposta erroResposta = new ErroResposta(status.value(), "Existem atributos inválidos! Confira o preenchimento.", LocalDateTime.now(), null);
-
-        return super.handleExceptionInternal(ex, erroResposta, headers, status, request);
-   }
+        return super.handleExceptionInternal(ex,erroResposta,headers, status, request);
+    }
 }

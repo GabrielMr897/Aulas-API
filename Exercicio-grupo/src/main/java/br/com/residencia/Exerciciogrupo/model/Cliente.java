@@ -2,12 +2,32 @@ package br.com.residencia.Exerciciogrupo.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.br.CPF;
+
+@Entity
 public class Cliente {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Preencha o campo nome.")
     private String nome;
+
+    @CPF(message = "Campo cpf inválido")
     private String cpf;
+
+    @Email(message = "Campo email inválido")
     private String email;
+    
+
     private LocalDate dataNascimento;
 
     
