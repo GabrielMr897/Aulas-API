@@ -2,6 +2,7 @@ package br.com.residencia.Exerciciogrupo.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,16 @@ public class Cliente {
 
     private LocalDate dataNascimento;
 
+    @Embedded
+    private Endereco endereco;
+
     
+    public Endereco getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
     public Long getId() {
         return id;
     }
