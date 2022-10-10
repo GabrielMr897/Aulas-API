@@ -50,9 +50,4 @@ public class Caracteristica {
     public void setCombustivel(Combustivel combustivel) {
         Combustivel = combustivel;
     }
-    @Override
-    public String toString() {
-        return "Caracteristica [renavam=" + renavam + ", chassi=" + chassi + ", ano=" + ano + ", categoria=" + categoria
-                + ", Combustivel=" + Combustivel + "]";
-    }
 }

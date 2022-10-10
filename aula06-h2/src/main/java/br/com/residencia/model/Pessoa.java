@@ -47,8 +47,5 @@ public class Pessoa {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + "]";
-    }
+  
 }
