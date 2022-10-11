@@ -8,18 +8,16 @@ import javax.persistence.Id;
 
 @Entity
 public class Pessoa {
+
     @Id
-    //gerar um id automaticamente 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String nome;
+    private String name;
     private String email;
 
-    public Pessoa(Long id, String nome, String email) {
-        super();
+    public Pessoa(Long id, String name, String email) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.email = email;
     }
 
@@ -31,12 +29,12 @@ public class Pessoa {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -47,5 +45,9 @@ public class Pessoa {
         this.email = email;
     }
 
-  
+    @Override
+    public String toString() {
+        return "Pessoa [id=" + id + ", name=" + name + ", email=" + email + "]";
+    }
+
 }

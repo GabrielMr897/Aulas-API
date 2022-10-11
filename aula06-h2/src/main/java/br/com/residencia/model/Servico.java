@@ -11,18 +11,12 @@ public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_servico")
-    private Long idServico;
+    private Long id;
 
     private String descricao;
     private Double valor;
 
     
-    public Long getIdServico() {
-        return idServico;
-    }
-    public void setIdServico(Long idServico) {
-        this.idServico = idServico;
-    }
     public String getDescricao() {
         return descricao;
     }
@@ -34,5 +28,11 @@ public class Servico {
     }
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 }

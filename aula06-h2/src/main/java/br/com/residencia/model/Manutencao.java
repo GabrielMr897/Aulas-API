@@ -37,7 +37,9 @@ public class Manutencao {
     private Veiculo veiculo;
 
     @ManyToMany
-    @JoinTable(name = "manutencao_servico", joinColumns = @JoinColumn(name = "id_manutencao"), inverseJoinColumns = @JoinColumn(name = "id_servico"))
+    @JoinTable(name = "manutencao_servico", 
+    joinColumns = @JoinColumn(name = "id_manutencao"), 
+    inverseJoinColumns = @JoinColumn(name = "id_servico"))
     private List<Servico> servicos;
 
     public Long getIdManutencao() {
