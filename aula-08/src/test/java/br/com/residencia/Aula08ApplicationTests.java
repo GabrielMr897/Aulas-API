@@ -1,4 +1,4 @@
-package br.com.residencia.aula08;
+package br.com.residencia;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
