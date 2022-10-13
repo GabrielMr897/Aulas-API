@@ -3,6 +3,7 @@ package br.com.residencia.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,9 @@ public class Funcionario implements Serializable  {
     protected String cpf;
     protected Double salario;
     protected String turno;
-    protected String cargo;
+
+    @Embedded
+    protected Gerente gerente;
 
     @JsonBackReference
     @ManyToOne
@@ -60,5 +63,17 @@ public class Funcionario implements Serializable  {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+    public Gerente getGerente() {
+        return gerente;
+    }
+    public void setGerente(Gerente gerente) {
+        this.gerente = gerente;
     }
 }

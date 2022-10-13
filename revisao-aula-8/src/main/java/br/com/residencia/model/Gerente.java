@@ -1,9 +1,9 @@
 package br.com.residencia.model;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 
-@Entity
-public class Gerente extends Funcionario{
+@Embeddable
+public class Gerente{
     
     private String setor;
 

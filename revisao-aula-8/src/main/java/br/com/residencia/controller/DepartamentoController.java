@@ -1,10 +1,13 @@
 package br.com.residencia.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,4 +33,15 @@ public class DepartamentoController {
     public List<Departamento> listar() {
         return departamentoRepository.findAll();
     }
+
+    @GetMapping("{id}")
+    public ResponseEntity<Departamento> buscar(@PathVariable Long id) {
+        Optional<Departamento> departamento = departamentoRepository.findById(id);
+
+        
+        if (departamento.isPresent()) {
+			return ResponseEntity.ok(departamento.get());
+		}
+		return ResponseEntity.notFound().build();
+	}
 }
