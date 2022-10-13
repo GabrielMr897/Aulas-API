@@ -23,11 +23,12 @@ public class Funcionario implements Serializable  {
     protected String cpf;
     protected Double salario;
     protected String turno;
+    protected String cargo;
 
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_departamento")
-    private Departamento departamento;
+    protected Departamento departamento;
 
 
     public String getNome() {
