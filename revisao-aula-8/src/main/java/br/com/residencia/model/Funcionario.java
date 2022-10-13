@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+
 @Entity
 public class Funcionario implements Serializable  {
 
