@@ -35,7 +35,7 @@ public class Vendedor{
     @NotBlank(message = "preencha o campo salario")
     private Double salario;
 
-     @JsonManagedReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "vendedorAutonomo")
     private List<LancamentoVendas> LancamentoVendas;
    

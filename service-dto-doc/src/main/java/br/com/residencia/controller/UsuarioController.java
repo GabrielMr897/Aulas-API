@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-
-import br.com.residencia.model.Usuario;
+import br.com.residencia.dto.UsuarioDTO;
+import br.com.residencia.dto.UsuarioInserirDTO;
 import br.com.residencia.service.UsuarioService;
 
 @RestController
@@ -25,20 +25,20 @@ public class UsuarioController {
 
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> listar() {
+    public ResponseEntity<List<UsuarioDTO>> listar() {
         return ResponseEntity.ok(usuarioService.listar());
     }
 
 
     @PostMapping
-    public ResponseEntity<Object> inserir(@RequestBody Usuario usuario) {
+    public ResponseEntity<Object> inserir(@RequestBody UsuarioInserirDTO usuarioInserirDTO) {
 
         try {
 
-            usuario = usuarioService.inserir(usuario);
-            URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getIdUsuario()).toUri();
+            UsuarioDTO usuarioDTO = usuarioService.inserir(usuarioInserirDTO);
+            URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuarioDTO.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(usuario);
+        return ResponseEntity.created(uri).body(usuarioDTO);
             
         } catch (Exception e) {
             return ResponseEntity.unprocessableEntity().body(e.getMessage());
