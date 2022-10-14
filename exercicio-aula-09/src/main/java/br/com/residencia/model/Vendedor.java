@@ -2,11 +2,17 @@ package br.com.residencia.model;
 
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 
@@ -18,12 +24,20 @@ public class Vendedor{
     @Column(name = "id_vendedor")
     protected Long idVendedor;
 
-    
+
+   
+    @NotBlank(message = "preencha o campo nome")
     private String nome;
 
+    @NotBlank(message = "preencha o campo email")
     private String email;
+
+    @NotBlank(message = "preencha o campo salario")
     private Double salario;
 
+     @JsonManagedReference
+    @OneToMany(mappedBy = "vendedorAutonomo")
+    private List<LancamentoVendas> LancamentoVendas;
    
 
     public Long getIdVendedor() {

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -19,14 +20,18 @@ public class LancamentoVendas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVenda;
 
+
     @Column(name ="data_venda")
+    @NotBlank(message = "preencha o campo de data da venda")
     private LocalDate dataVenda;
 
+    @NotBlank(message = "preencha o valor da venda")
     @Column(name = "valor_venda")
     private Double valorVenda;
 
     @JsonBackReference
     @ManyToOne
+    @NotBlank(message = "preencha o id válido do vendedor que fez a venda")
     @JoinColumn(name = "id_vendedor")
     private VendedorAutonomo vendedorAutonomo;
 

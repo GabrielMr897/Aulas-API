@@ -2,21 +2,15 @@ package br.com.residencia.model;
 
 
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity
 public class VendedorAutonomo extends Vendedor {
     
-    @JsonManagedReference
-    @OneToMany(mappedBy = "vendedorAutonomo")
-    private List<LancamentoVendas> LancamentoVendas;
-
+    
+    @NotBlank(message = "preencha o campo de comissão corretamente")
     private Double comissao;
 
     public Double getComissao() {
