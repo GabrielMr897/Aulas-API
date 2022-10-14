@@ -1,13 +1,16 @@
 package br.com.residencia.model;
 
+
+
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 
-@Entity
+
+@MappedSuperclass
 public class Vendedor{
   
     @Id
@@ -16,11 +19,12 @@ public class Vendedor{
     protected Long idVendedor;
 
     
-    protected String nome;
+    private String nome;
 
-    protected String email;
-    protected Double salario;
+    private String email;
+    private Double salario;
 
+   
 
     public Long getIdVendedor() {
         return idVendedor;
