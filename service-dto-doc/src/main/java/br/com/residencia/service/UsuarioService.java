@@ -26,7 +26,7 @@ public class UsuarioService {
     public Usuario inserir(Usuario u) {
         Usuario usuario = usuarioRepository.findByEmail(u.getEmail());
 
-        if (usuario!= null) {
+        if (usuario != null) {
             throw new EmailException("Email já existe na base");
 
         }
