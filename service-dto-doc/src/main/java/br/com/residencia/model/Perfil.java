@@ -11,27 +11,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
-
 @Entity
-public class Usuario {
+public class Perfil {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
-    private Long idUsuario;
+    @Column(name="id_perfil")
+    private Long idPerfil;
     private String nome;
-    private String email;
-    private String senha;
 
-    @OneToMany(mappedBy = "id.usuario", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "id.perfil", fetch = FetchType.EAGER)
     private Set<UsuarioPerfil> usuarioPerfil = new HashSet<>();
 
-    
-    public Long getIdUsuario() {
-        return idUsuario;
+    public Long getIdPerfil() {
+        return idPerfil;
     }
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdPerfil(Long idPerfil) {
+        this.idPerfil = idPerfil;
     }
     public String getNome() {
         return nome;
@@ -39,22 +35,11 @@ public class Usuario {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
     public Set<UsuarioPerfil> getUsuarioPerfil() {
         return usuarioPerfil;
     }
     public void setUsuarioPerfil(Set<UsuarioPerfil> usuarioPerfil) {
         this.usuarioPerfil = usuarioPerfil;
     }
+
 }
