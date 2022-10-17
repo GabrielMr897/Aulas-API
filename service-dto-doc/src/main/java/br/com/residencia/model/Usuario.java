@@ -57,4 +57,8 @@ public class Usuario {
     public void setUsuarioPerfil(Set<UsuarioPerfil> usuarioPerfil) {
         this.usuarioPerfil = usuarioPerfil;
     }
+    @Override
+    public String toString() {
+        return "Id=" + idUsuario + "\nNome=" + nome + "\nEmail=" + email;
+    }
 }

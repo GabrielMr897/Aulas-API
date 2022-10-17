@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.residencia.config.MailConfig;
 import br.com.residencia.dto.UsuarioDTO;
 import br.com.residencia.dto.UsuarioInserirDTO;
 import br.com.residencia.exception.EmailException;
@@ -30,6 +31,8 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioPerfilRepository usuarioPerfilRepository;
+
+    private MailConfig mailConfig;
 
 
     public List<UsuarioDTO> listar() {
@@ -61,6 +64,7 @@ public class UsuarioService {
             usuarioPerfil.setDataCriacao(LocalDate.now());
         }
         usuarioPerfilRepository.saveAll(u.getUsuarioPerfil());
+        mailConfig.sendEmail(usuario.getEmail(), "Cadastro de Usuário", usuario.toString());
         return new UsuarioDTO(usuario);
     }
 }
