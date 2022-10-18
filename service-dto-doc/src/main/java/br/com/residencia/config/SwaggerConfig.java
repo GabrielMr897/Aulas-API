@@ -3,6 +3,8 @@ package br.com.residencia.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import br.com.residencia.model.Perfil;
+import br.com.residencia.model.Usuario;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -16,7 +18,7 @@ public class SwaggerConfig {
     
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("br.com.residencia.controller")).paths(PathSelectors.any()).build().apiInfo(apiInfo());
+        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("br.com.residencia.controller")).paths(PathSelectors.any()).build().ignoredParameterTypes(Usuario.class, Perfil.class).apiInfo(apiInfo());
     }
 
     public ApiInfo apiInfo() {
