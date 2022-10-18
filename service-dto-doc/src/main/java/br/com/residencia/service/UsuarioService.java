@@ -32,6 +32,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioPerfilRepository usuarioPerfilRepository;
 
+    @Autowired
     private MailConfig mailConfig;
 
 
@@ -56,7 +57,7 @@ public class UsuarioService {
         Usuario usuario = new Usuario();
         usuario.setNome(u.getNome());
         usuario.setEmail(u.getEmail());
-        u.setSenha(bCryptPasswordEncoder.encode(u.getSenha()));
+        usuario.setSenha(bCryptPasswordEncoder.encode(u.getSenha()));
         usuario = usuarioRepository.save(usuario);
         for (UsuarioPerfil usuarioPerfil : u.getUsuarioPerfil()) {
             usuarioPerfil.setUsuario(usuario);
