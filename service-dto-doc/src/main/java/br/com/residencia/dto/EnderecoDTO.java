@@ -1,14 +1,18 @@
 package br.com.residencia.dto;
 
 import br.com.residencia.model.Endereco;
+import io.swagger.annotations.ApiModelProperty;
 
 public class EnderecoDTO {
     
+    @ApiModelProperty(value = "Identificador de uma rua")    
     private String cep;
+    @ApiModelProperty(value = "Identificador de uma rua")
 	private String logradouro;
 	private String complemento;
 	private String bairro;
 	private String localidade;
+    @ApiModelProperty(value ="Identifica o estado")
 	private String uf;
 
     public EnderecoDTO() {
