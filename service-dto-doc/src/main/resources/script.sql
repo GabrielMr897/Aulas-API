@@ -1,3 +1,4 @@
+-- Active: 1666029564003@@127.0.0.1@5432@projeto@public
 CREATE TABLE
     usuario(
         id_usuario serial primary key,
@@ -29,9 +30,16 @@ CREATE TABLE
     );
 
 ALTER TABLE usuario
+ADD COLUMN id_endereco bigint,
 ADD
-    COLUMN 
-        id_endereco bigint,
-        ADD
-            CONSTRAINT fk_id_endereco FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
-    ;
+    CONSTRAINT fk_id_endereco FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco);
+
+CREATE TABLE
+    foto(
+        id_foto serial PRIMARY KEY,
+        dados oid,
+        tipo varchar(100),
+        nome VARCHAR(50),
+        id_usuario BIGINT,
+        FOREIGN KEY(id_usuario) REFERENCES usuario (id_usuario)
+    )
