@@ -34,7 +34,7 @@ public class Veiculo {
     @Column(nullable = false, length = 30)
     private String marca;
 
-    @NotBlank(message = "Você deve colocar a modelo do carro")
+    @NotBlank(message = "Você deve colocar o modelo do carro")
     @Size(max = 40)
     @Column(nullable = false, length = 40)
     private String modelo;
