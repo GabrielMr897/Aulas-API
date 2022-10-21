@@ -67,4 +67,10 @@ public class Usuario {
     public String toString() {
         return "Id=" + idUsuario + "\nNome=" + nome + "\nEmail=" + email;
     }
+    public Endereco getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }

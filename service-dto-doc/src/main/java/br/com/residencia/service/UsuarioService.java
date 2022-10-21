@@ -35,7 +35,7 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioPerfilRepository usuarioPerfilRepository;
-    
+
     @Autowired
     private FotoService fotoService;
 
@@ -43,9 +43,11 @@ public class UsuarioService {
     private MailConfig mailConfig;
 
     public UsuarioDTO inserirUriImagem(Usuario usuario) {
-        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/usuarios/{id}/foto").buildAndExpand(usuario.getIdUsuario()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/usuarios/{id}/foto")
+                .buildAndExpand(usuario.getIdUsuario()).toUri();
 
         UsuarioDTO dto = new UsuarioDTO();
+        dto.setId(usuario.getIdUsuario());
         dto.setNome(usuario.getNome());
         dto.setEmail(usuario.getEmail());
         dto.setUri(uri.toString());
@@ -53,20 +55,17 @@ public class UsuarioService {
         return dto;
     }
 
-
-
     public List<UsuarioDTO> listar() {
         List<Usuario> usuarios = usuarioRepository.findAll();
         List<UsuarioDTO> usuarioDTO = new ArrayList<>();
 
-
-        for(Usuario usuario : usuarios) {
+        for (Usuario usuario : usuarios) {
             usuarioDTO.add(inserirUriImagem(usuario));
         }
         return usuarioDTO;
     }
 
-    public UsuarioDTO inserir(UsuarioInserirDTO usuarioInserirDTO, MultipartFile file) throws IOException{
+    public UsuarioDTO inserir(UsuarioInserirDTO usuarioInserirDTO, MultipartFile file) throws IOException {
 
         if (usuarioRepository.findByEmail(usuarioInserirDTO.getEmail()) != null) {
             throw new EmailException("Email já existe na base");
@@ -77,14 +76,15 @@ public class UsuarioService {
         usuario.setEmail(usuarioInserirDTO.getEmail());
         usuario.setSenha(bCryptPasswordEncoder.encode(usuarioInserirDTO.getSenha()));
         fotoService.inserir(usuarioRepository.save(usuario), file);
-        //usuario = usuarioRepository.save(usuario);
+        // usuario = usuarioRepository.save(usuario);
         for (UsuarioPerfil usuarioPerfil : usuarioInserirDTO.getUsuarioPerfil()) {
             usuarioPerfil.setUsuario(usuario);
             usuarioPerfil.setPerfil(perfilService.buscar(usuarioPerfil.getPerfil().getIdPerfil()));
             usuarioPerfil.setDataCriacao(LocalDate.now());
         }
         usuarioPerfilRepository.saveAll(usuarioInserirDTO.getUsuarioPerfil());
-        //mailConfig.sendEmail(usuario.getEmail(), "Cadastro de Usuário", usuario.toString());
+        // mailConfig.sendEmail(usuario.getEmail(), "Cadastro de Usuário",
+        // usuario.toString());
         return inserirUriImagem(usuario);
     }
 }
