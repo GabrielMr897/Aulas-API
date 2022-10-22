@@ -2,11 +2,42 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch ExercicioAula09Application",
+      "request": "launch",
+      "mainClass": "br.com.residencia.ExercicioAula09Application",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "Launch Aula06H2Application",
+      "request": "launch",
+      "mainClass": "br.com.residencia.Aula06H2Application",
+      "projectName": "aula06-h2"
+    },
+    {
+      "type": "java",
+      "name": "Launch ExercicioGrupoApplication",
+      "request": "launch",
+      "mainClass": "br.com.residencia.Exerciciogrupo.ExercicioGrupoApplication",
+      "projectName": "Exercicio-grupo"
+    },
+    {
+      "type": "java",
       "name": "Spring Boot-ServiceDtoDocApplication<service-dto-doc>",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "mainClass": "br.com.residencia.ServiceDtoDocApplication",
       "projectName": "service-dto-doc",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-Aula3OrmApplication<aula3-orm>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "br.com.residencia.Aula3OrmApplication",
+      "projectName": "aula3-orm",
       "args": "",
       "envFile": "${workspaceFolder}/.env"
     }

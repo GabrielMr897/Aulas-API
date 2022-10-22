@@ -8,6 +8,7 @@ public class UsuarioDTO {
     private Long id;
     private String nome;
     private String email;
+    private String uri;
 
     
     public UsuarioDTO() {
@@ -49,6 +50,16 @@ public class UsuarioDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    public String getUri() {
+        return uri;
+    }
+
+
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
 

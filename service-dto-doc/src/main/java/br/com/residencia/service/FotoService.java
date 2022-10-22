@@ -1,0 +1,39 @@
+package br.com.residencia.service;
+
+import java.io.IOException;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import br.com.residencia.model.Foto;
+import br.com.residencia.model.Usuario;
+import br.com.residencia.repository.FotoRepository;
+
+@Service
+public class FotoService {
+    @Autowired
+    private FotoRepository fotoRepository;
+
+    
+    public Foto inserir(Usuario usuario, MultipartFile file) throws IOException {
+        Foto foto = new Foto();
+
+        foto.setNome(file.getName());
+        foto.setTipo(file.getContentType());
+        foto.setDados(file.getBytes());
+        foto.setUsuario(usuario);
+        return fotoRepository.save(foto);
+
+    }
+
+    public Foto buscar(Long id) {
+        Optional<Foto> foto = fotoRepository.findById(id);
+
+        if(!foto.isPresent()) {
+            return null;
+        }
+        return foto.get();
+    }
+}
